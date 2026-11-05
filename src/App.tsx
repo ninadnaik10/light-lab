@@ -62,7 +62,10 @@ export default function App() {
         </Suspense>
       </main>
       <footer className="border-t border-slate-900 py-6 text-center text-xs text-slate-600">
-        Light Lab · New Cartesian sign convention · Distances in cm, angles measured from the normal
+        Light Lab · Made by{' '}
+        <a href="https://ninadnaik.me" target="_blank" rel="noopener" className="text-slate-400 underline-offset-2 hover:text-cyan-300 hover:underline">
+          Ninad Naik
+        </a>
       </footer>
     </div>
   )
