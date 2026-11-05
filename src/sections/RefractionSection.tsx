@@ -1,8 +1,10 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { Badge, Button, Card, FormulaCard, Legend, QuizCard, Readout, ReadoutGrid, SectionLayout, Slider } from '../components/ui'
+import { onRouteLinkClick } from '../hooks/usePathRoute'
 import { useSweep } from '../hooks/useSweep'
 import { RAY_COLORS } from '../lib/color'
 import { clamp, fmt, fmtDeg } from '../lib/format'
+import { pathFor } from '../routes'
 import { criticalAngleDeg, fresnelReflectance, snellAngle } from '../lib/optics'
 import { MediumControl } from './refraction/MediumControl'
 import { RefractionDiagram } from './refraction/RefractionDiagram'
@@ -139,7 +141,7 @@ export default function RefractionSection() {
               {isTir && (
                 <>
                   <Badge tone="danger">Total internal reflection</Badge>
-                  <a href="#tir" className="text-xs font-medium text-cyan-300 underline-offset-2 hover:underline">
+                  <a href={pathFor('tir')} onClick={onRouteLinkClick} className="text-xs font-medium text-cyan-300 underline-offset-2 hover:underline">
                     Explore TIR →
                   </a>
                 </>

@@ -3,12 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Light Lab: interactive visualizations of reflection, refraction, total internal reflection, dispersion, mirrors and lenses for high-school physics." />
+    <!-- Per-page values below are rewritten for every route by scripts/seo-pages.mjs (build) and src/routes.ts (client). -->
+    <title>Light Lab: Interactive Optics Simulations for Physics</title>
+    <meta name="description" content="Free interactive optics for high-school physics: reflection, refraction, Snell's law, total internal reflection, prism dispersion, mirrors and lenses." />
+    <link rel="canonical" href="https://light-lab.ninadnaik.me/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#020617" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Light Lab · Interactive Optics</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Light Lab" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:url" content="https://light-lab.ninadnaik.me/" />
+    <meta property="og:title" content="Light Lab: Interactive Optics Simulations for Physics" />
+    <meta property="og:description" content="Free interactive optics for high-school physics: reflection, refraction, Snell's law, total internal reflection, prism dispersion, mirrors and lenses." />
+    <meta property="og:image" content="https://light-lab.ninadnaik.me/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Light Lab dispersion simulator: white light split into a spectrum by a glass prism" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Light Lab: Interactive Optics Simulations for Physics" />
+    <meta name="twitter:description" content="Free interactive optics for high-school physics: reflection, refraction, Snell's law, total internal reflection, prism dispersion, mirrors and lenses." />
+    <meta name="twitter:image" content="https://light-lab.ninadnaik.me/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["WebApplication", "LearningResource"],
+        "name": "Light Lab",
+        "url": "https://light-lab.ninadnaik.me/",
+        "description": "Free interactive optics simulations for high-school physics: reflection, refraction and Snell's law, total internal reflection, prism dispersion, spherical mirrors and lenses.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "inLanguage": "en",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "educationalLevel": "High school",
+        "learningResourceType": "Simulation",
+        "audience": { "@type": "EducationalAudience", "educationalRole": "student" },
+        "teaches": [
+          "Laws of reflection",
+          "Refraction and Snell's law",
+          "Total internal reflection and critical angle",
+          "Dispersion of light by a prism",
+          "Image formation by spherical mirrors",
+          "Image formation by lenses"
+        ],
+        "image": "https://light-lab.ninadnaik.me/og-image.png",
+        "author": { "@type": "Person", "name": "Ninad Naik", "url": "https://ninadnaik.me" }
+      }
+    </script>
   </head>
   <body class="bg-slate-950 text-slate-100 antialiased">
-    <div id="root"></div>
+    <div id="root"><!--seo-fallback--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

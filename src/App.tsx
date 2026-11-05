@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react'
-import { useHashRoute } from './hooks/useHashRoute'
+import { onRouteLinkClick, usePathRoute } from './hooks/usePathRoute'
+import { applyHead, ROUTES, routeFor, type SectionId } from './routes'
 
 const ReflectionSection = lazy(() => import('./sections/ReflectionSection'))
 const RefractionSection = lazy(() => import('./sections/RefractionSection'))
@@ -17,42 +18,38 @@ export const SECTIONS = [
   { id: 'lenses', label: 'Lenses', short: 'Lenses', Component: LensesSection },
 ] as const
 
-export type SectionId = (typeof SECTIONS)[number]['id']
-const IDS = SECTIONS.map((s) => s.id) as readonly SectionId[]
-
 export default function App() {
-  const [current, navigate] = useHashRoute<SectionId>(IDS, 'reflection')
+  const current = usePathRoute<SectionId>(ROUTES, 'reflection')
   const section = SECTIONS.find((s) => s.id === current) ?? SECTIONS[0]
 
   useEffect(() => {
-    document.title = `${section.label} · Light Lab`
-  }, [section.label])
+    applyHead(routeFor(section.id))
+  }, [section.id])
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <nav className="sticky top-0 z-20 border-b border-slate-800 bg-slate-950/85 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 sm:px-6">
-          <a href="#reflection" className="flex shrink-0 items-center gap-2 py-3" aria-label="Light Lab home">
+          <a href="/" onClick={onRouteLinkClick} className="flex shrink-0 items-center gap-2 py-3" aria-label="Light Lab home">
             <span className="inline-block h-6 w-6 rounded-full bg-[conic-gradient(from_0deg,#f87171,#fbbf24,#4ade80,#22d3ee,#a78bfa,#f87171)] shadow-[0_0_14px_rgba(34,211,238,0.6)]" />
             <span className="text-base font-bold tracking-tight">Light Lab</span>
           </a>
-          <ul className="scrollbar-thin flex flex-1 gap-1 overflow-x-auto py-2" role="tablist">
+          <ul className="scrollbar-thin flex flex-1 gap-1 overflow-x-auto py-2">
             {SECTIONS.map((s) => {
               const active = s.id === current
               return (
                 <li key={s.id} className="shrink-0">
-                  <button
-                    type="button"
-                    role="tab"
-                    aria-selected={active}
-                    onClick={() => navigate(s.id)}
-                    className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+                  <a
+                    href={routeFor(s.id).path}
+                    aria-current={active ? 'page' : undefined}
+                    onClick={onRouteLinkClick}
+                    className={`block rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
                       active ? 'bg-slate-800 text-cyan-200 shadow-inner' : 'text-slate-400 hover:bg-slate-900 hover:text-slate-100'
                     }`}
                   >
                     <span className="hidden md:inline">{s.label}</span>
                     <span className="md:hidden">{s.short}</span>
-                  </button>
+                  </a>
                 </li>
               )
             })}

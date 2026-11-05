@@ -1,0 +1,44 @@
+{
+  "site": "https://light-lab.ninadnaik.me",
+  "name": "Light Lab",
+  "ogImage": "/og-image.png",
+  "routes": [
+    {
+      "id": "reflection",
+      "path": "/",
+      "aliases": ["/reflection"],
+      "title": "Light Lab: Interactive Optics Simulations for Physics",
+      "description": "Free interactive optics for high-school physics: reflection, refraction, Snell's law, total internal reflection, prism dispersion, mirrors and lenses."
+    },
+    {
+      "id": "refraction",
+      "path": "/refraction",
+      "title": "Refraction and Snell's Law Simulator | Light Lab",
+      "description": "Drag a light ray between air, water, glass and diamond and watch Snell's law bend it, with live angles, speeds and n1 sin i = n2 sin r worked out."
+    },
+    {
+      "id": "tir",
+      "path": "/total-internal-reflection",
+      "title": "Total Internal Reflection and Critical Angle | Light Lab",
+      "description": "Push the angle past the critical angle and watch the refracted ray vanish. Live critical angle, reflected percentage and an optical fibre demo."
+    },
+    {
+      "id": "dispersion",
+      "path": "/dispersion",
+      "title": "Prism Dispersion Simulator: White Light Spectrum | Light Lab",
+      "description": "Split white light into a spectrum with a glass prism. Change the glass, apex angle and wavelength, find minimum deviation, and see rainbows form."
+    },
+    {
+      "id": "mirrors",
+      "path": "/spherical-mirrors",
+      "title": "Concave and Convex Mirror Ray Diagrams | Light Lab",
+      "description": "Drag the object in front of a concave or convex mirror and watch the ray diagram, image position, magnification and mirror formula update live."
+    },
+    {
+      "id": "lenses",
+      "path": "/lenses",
+      "title": "Convex and Concave Lens Ray Diagrams | Light Lab",
+      "description": "Move an object in front of a convex or concave lens and see the image form, with the lens formula, magnification and power in dioptres worked out."
+    }
+  ]
+}

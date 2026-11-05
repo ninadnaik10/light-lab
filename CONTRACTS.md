@@ -10,8 +10,14 @@ instead of editing the shared file. Do not install new npm packages.
   dark theme, slate palette), Vitest for pure math. Commands: `npm run dev` (already running on
   http://localhost:5173), `npm run typecheck`, `npm test`, `npm run build`.
 - Routing: `src/App.tsx` lazily imports `src/sections/<Name>Section.tsx`. Each section file
-  **default-exports a React component with no props**. Hash ids: `#reflection`, `#refraction`,
-  `#tir`, `#dispersion`, `#mirrors`, `#lenses`.
+  **default-exports a React component with no props**. Path routing (`src/hooks/usePathRoute.ts`):
+  ids `reflection`, `refraction`, `tir`, `dispersion`, `mirrors`, `lenses` map to the URLs, titles and
+  meta descriptions in `src/data/seo.json` (`/`, `/refraction`, `/total-internal-reflection`, ...).
+  Old `/#<id>` links are rewritten to the path on load. Link between sections with
+  `<a href={pathFor(id)} onClick={onRouteLinkClick}>` so crawlers see a real link.
+- SEO: `npm run build` ends with `scripts/seo-pages.mjs`, which writes `dist/<path>/index.html` per
+  route (own title, description, canonical, Open Graph tags, crawlable fallback), `sitemap.xml` and
+  a noindex `404.html`. Add or rename a section in `seo.json` and both the app and the build pick it up.
 - Physics conventions: angles in degrees measured from the normal; **New Cartesian** signs for
   mirrors/lenses (origin at pole / optical centre, light travels left → right, object distance
   `u < 0`, concave mirror `f < 0`, convex mirror `f > 0`, convex lens `f > 0`, concave lens `f < 0`).
